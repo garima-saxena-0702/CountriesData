@@ -1,0 +1,153 @@
+:root {
+    --paddingWeight: 0.5em;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    background-color: aliceblue;
+    display: flex;
+    overflow: hidden;
+}
+
+.aside {
+    flex: 2;
+    background-color: blueviolet;
+}
+
+.main {
+    flex: 8;
+    background-color: cornflowerblue;
+}
+
+.searchCountry {
+    height: 5%;
+    width: 87%;
+    margin: var(--paddingWeight);
+    padding: var(--paddingWeight);
+    background-color: brown;
+}
+
+.countryList {
+    height: 86%;
+    width: 87%;
+    margin: var(--paddingWeight);
+    padding: var(--paddingWeight);
+    overflow: hidden;
+    background-color: coral;
+}
+
+.countryList:hover {
+    overflow: auto;
+}
+
+.countryList::-webkit-scrollbar {
+    width: var(--paddingWeight);
+}
+
+.countryList::-webkit-scrollbar-track {
+    border-radius: 1em;
+}
+
+.countryList::-webkit-scrollbar-thumb {
+    border-radius: 1em;
+    background-color: lightgray;
+}
+
+.countryList::-webkit-scrollbar-thumb:hover {
+    background-color: darkgray;
+}
+
+.list {
+    list-style-type: none;
+    padding-left: 1em;
+}
+
+.list li {
+    padding: var(--paddingWeight); 
+}
+
+.list li {
+    cursor: pointer;
+}
+
+.list li::after {
+    width: 4em;
+    height: 0.2em;
+    content: '';
+    background-color: darkgray;
+}
+
+.searchDiv{
+    border: 1px solid lightgrey;
+    display: flex;
+    border-radius: 1em;
+    box-sizing: border-box;
+    padding: var(--paddingWeight);
+    height: 100%;
+}
+
+.inputSearch {
+    background-color: transparent;
+    outline: none;
+    color: lightgray;
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin-left: var(--paddingWeight);
+}
+
+.headerTitle {
+    width: 97%;
+    height: 5%;
+    margin: var(--paddingWeight);
+    padding: var(--paddingWeight);
+    background-color: chocolate;
+    display: flex;
+}
+
+.contentDiv {
+    width: 97%;
+    height: 86%;
+    margin: var(--paddingWeight);
+    padding: var(--paddingWeight);
+    background-color: darkorchid;
+    display: grid;
+    grid-auto-rows: 11em;
+    grid-gap: var(--paddingWeight);
+}
+
+.flag {
+    background-color: lightslategray;
+    grid-column: 1/3;
+    grid-row: 1;
+}
+
+.contentInfo {
+    background-color: darkslategray;
+    grid-column: 2/4;
+    grid-row: 1;
+}
+
+
+.wikipedia {
+    background-color: dimgray;
+    grid-column: 1/4;
+    grid-row: 2;
+}
+
+.map {
+    background-color: darkslateblue;
+    grid-column: 1/4;
+    grid-row: 3;
+}
+
+.countryImages {
+    background-color: midnightblue;
+    grid-column: 2/4;
+    grid-row: 3;
+}

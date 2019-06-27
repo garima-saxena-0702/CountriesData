@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="aside">
+            <div class="searchCountry">
+                <div class="searchDiv">
+                    <img src="https://image.flaticon.com/icons/png/512/954/954591.png" alt="Search" style="height: 1.2em;">
+                    <input type="text" placeholder="Search" class="inputSearch" onkeyup="changeList()">
+                </div>
+            </div>
+            <div class="countryList">
+                <ul class="list"></ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="headerTitle">
+                <div class="title"></div>
+            </div>
+            <div class="contentDiv">
+                <div class="flag">
+                    <img src="" alt="" id="flagImage" style="height: 100%; width: 50%;">
+                </div>
+                <div class="contentInfo">
+                    <p id="name"></p>
+                    <p id="capital"></p>
+                    <p id="region"></p>
+                    <p id="area"></p>
+                    <p id="currency"></p>
+                    <p id="language"></p>
+                </div>
+                <div class="wikipedia"></div>
+                <div class="map">map</div>
+                <div class="countryImages">img</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="app.js"></script>
+</html>
