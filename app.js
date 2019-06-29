@@ -17,7 +17,7 @@ function getCountriesList() {
 function addCountriesList(data) {
     data.map((country) => {
         let li = document.createElement('li');
-        li.innerHTML = country.name;
+        li.innerHTML = `<span>${country.name}</span>`;
         li.onclick = ()=>detailData(country.name)
         ul.appendChild(li);
     })     
@@ -25,14 +25,27 @@ function addCountriesList(data) {
 
 function changeList() {
     let textValue = document.getElementsByClassName('inputSearch')[0].value;
-    let newList = countryList.filter(x => x.name.toLowerCase().indexOf(textValue.toLowerCase()) > -1)
-    removeList();
-    addCountriesList(newList);
+    removeList(textValue);
 }
 
-function removeList() {
-    while (ul.firstChild) {
-        ul.removeChild(ul.firstChild);
+function removeList(textValue) {
+    for(let i = 0; i < ul.children.length; i++){
+        if (!ul.children[i].children[0].innerHTML.toLowerCase().includes(textValue.toLowerCase())){
+            ul.children[i].style.height = 0;
+            ul.children[i].style.opacity = 0;
+            ul.children[i].style.padding = '0 0.5em';
+            ul.children[i].style.borderBottom = '0px solid rgba(0, 0, 0, 0.5)';
+            // ul.children[i].children[0].style.opacity=0;
+            // ul.children[i].children[0].style.fontSize=0;
+        }else {
+            ul.children[i].style.opacity = 1;
+            ul.children[i].style.height = '100%';
+            ul.children[i].style.padding = '0.5em 0.5em';
+            ul.children[i].style.borderBottom = '1px solid rgba(0, 0, 0, 0.5)';
+            // ul.children[i].children[0].style.opacity=1;
+            // ul.children[i].children[0].style.fontSize='1em';
+
+        }
     }
 }
 

@@ -6,14 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 </head>
 <body>
     <div class="container">
         <div class="aside">
             <div class="searchCountry">
                 <div class="searchDiv">
-                    <img src="https://image.flaticon.com/icons/png/512/954/954591.png" alt="Search" style="height: 1.2em;">
+                    <!-- <img src="https://image.flaticon.com/icons/png/512/954/954591.png" alt="Search" style="height: 1.2em;"> -->
+                    <div class="imageIcon"></div>
                     <input type="text" placeholder="Search" class="inputSearch" onkeyup="changeList()">
+                    <button>
+                        <div class="closeButton"></div>
+                    </button>
                 </div>
             </div>
             <div class="countryList">
@@ -26,7 +31,7 @@
             </div>
             <div class="contentDiv">
                 <div class="flag">
-                    <img src="" alt="" id="flagImage" style="height: 100%; width: 50%;">
+                    <img src="" alt="" id="flagImage" style="height: 100%; width: auto">
                 </div>
                 <div class="contentInfo">
                     <p id="name"></p>
