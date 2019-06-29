@@ -32,8 +32,22 @@ body {
     padding: var(--paddingWeight);
 }
 
+.searchPlaceholder {
+    position: relative;
+    left: -8em;
+    color: #0000004d;
+    z-index: -1;
+}
+
+.inputSearch:focus  + .searchPlaceholder {
+    top: -1.1em;
+    z-index: 2;
+    background-color: white;
+    left: -8.6em;
+} 
+
 .imageIcon {
-    width: 0.9em;
+    width: 01em;
     height: 0.9em;
     border-radius: 50%;
     border: 1px solid #0000004d;
@@ -75,7 +89,6 @@ body {
     height: 1.3em;
     border: 1px solid #0000004d;
     transform: rotate(90deg)
-    
 }
 
 .countryList {
@@ -138,7 +151,7 @@ body {
 
 .inputSearch {
     outline: none;
-    /* color: lightgray; */
+    background-color: transparent;
     width: 100%;
     height: 100%;
     border: none;
