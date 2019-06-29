@@ -23,6 +23,11 @@ function addCountriesList(data) {
     })     
 }
 
+function clearSearchText() {
+    document.getElementsByClassName('inputSearch')[0].value = '';
+    changeList();
+}
+
 function changeList() {
     let textValue = document.getElementsByClassName('inputSearch')[0].value;
     removeList(textValue);
@@ -90,8 +95,7 @@ function callWikiPedia(countryName) {
 }
 
 function callMap(latlang) {
-    console.log(latlang);
-    
+    console.log(latlang);    
 }
 
 getCountriesList();

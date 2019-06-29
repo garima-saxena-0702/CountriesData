@@ -57,7 +57,8 @@ body {
 
 .searchDiv button {
     border: none;
-    background: none
+    background: none;
+    outline: none;
 }
 
 .closeButton {
