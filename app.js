@@ -40,16 +40,11 @@ function removeList(textValue) {
             ul.children[i].style.opacity = 0;
             ul.children[i].style.padding = '0 0.5em';
             ul.children[i].style.borderBottom = '0px solid rgba(0, 0, 0, 0.5)';
-            // ul.children[i].children[0].style.opacity=0;
-            // ul.children[i].children[0].style.fontSize=0;
         }else {
             ul.children[i].style.opacity = 1;
             ul.children[i].style.height = '100%';
             ul.children[i].style.padding = '0.5em 0.5em';
             ul.children[i].style.borderBottom = '1px solid rgba(0, 0, 0, 0.5)';
-            // ul.children[i].children[0].style.opacity=1;
-            // ul.children[i].children[0].style.fontSize='1em';
-
         }
     }
 }
@@ -63,39 +58,73 @@ function detailData(countryName) {
         .then(function(data) {
             countryData = data;
             document.getElementById('flagImage').src = countryData[0].flag;
-            document.getElementById('name').innerHTML = countryData[0].name;
-            document.getElementById('capital').innerHTML = countryData[0].capital;
-            document.getElementById('region').innerHTML = countryData[0].region;
-            document.getElementById('area').innerHTML = countryData[0].area;
-            document.getElementById('currency').innerHTML = countryData[0].currencies[0].name;
-            document.getElementById('language').innerHTML = countryData[0].languages[0].name;
+            document.getElementById('Capital').innerHTML = countryData[0].capital;
+            document.getElementById('Region').innerHTML = countryData[0].region;
+            document.getElementById('Timezones').innerHTML = countryData[0].timezones[0];
+            document.getElementById('Currency').innerHTML = countryData[0].currencies[0].name;
+            document.getElementById('Language').innerHTML = countryData[0].languages[0].name;
+            document.getElementById('Borders').innerHTML = countryData[0].borders;
+            document.getElementById('Area').innerHTML = countryData[0].area + 'Sq Kms';
+            document.getElementById('Population').innerHTML = countryData[0].population;
+            document.getElementById('Location').innerHTML = countryData[0].latlang;
             callWikiPedia(countryData[0].name);
-            callMap(countryData[0].latlng)
+            // callMap(countryData[0].latlng)
         }).catch(function(err) {
             console.log(err);
     });
 }
 
-function callWikiPedia(countryName) {
-    fetch('https://en.wikipedia.org/w/api.php?action=opensearch&search='+countryName, {
-        method: 'get',
-        mode: 'no-cors',
-        dataType: 'jsonp',
-        headers: {
-            'Access-Control-Allow-Credentials' : true,
-            'Access-Control-Allow-Origin':'*',
-            'Access-Control-Allow-Methods':'GET'
-        }
-    }).then((resp) => resp.json())
-    .then((data) => {
-        console.log(data);
-    }).catch((err) => {
-        console.log(err);
-    })
+function addMoreLinks(links) {
+    var linkDiv = document.getElementById('moreLinks');
+    links.forEach(link => {
+        let aTag = document.createElement('a');
+        aTag.href = link;
+        aTag.target = '_blank';
+        let title = link.split('wiki/')[1];
+        title = title.replace(/_/g, ' ');
+        title = title.replace(/%E2%80%93/g, ' - ');
+        title = title.replace(/%27/g, "'");
+        console.log(title)
+        aTag.innerHTML = title+'<br>';
+        linkDiv.appendChild(aTag);
+    });
 }
 
-function callMap(latlang) {
-    console.log(latlang);    
+function callWikiPedia(countryName) {
+    var wiki = 'http://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=' + countryName + '&imlimit=5&format=json&callback=wikiCallback';
+
+    var wikiResponse = wikiAjax(wiki);
+    wikiResponse.done(function (data) {
+        console.log(data);
+
+        document.getElementById('wikiContent').innerHTML = data[2][0];
+        document.getElementById('wikiHeading').innerHTML = 'ABOUT ' + data[1][0].toUpperCase();
+        document.getElementById('wikiLink').innerHTML = '<a target="_blank" href="'+ data[3][0] +'"> Know More About ' + data[1][0] +'</a>';
+        addMoreLinks(data[3]);
+    }).fail(function (err) {
+        console.log("The call has been rejected");
+    });
 }
+
+function wikiAjax(searchURL) {
+    return $.ajax({
+        url: searchURL,
+        jsonp: "callback",
+        dataType: 'jsonp',
+        xhrFields: {
+            withCredentials: true
+        }
+    });
+}
+
+
+function callMap(latlang) {
+    var mapProp = {
+        center: new google.maps.LatLng(latlang[0], latlang[1]),
+        zoom: 5,
+    };
+    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+}    
+
 
 getCountriesList();

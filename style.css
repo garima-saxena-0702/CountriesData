@@ -35,11 +35,14 @@ body {
 .searchPlaceholder {
     position: relative;
     left: -8em;
+    top: 0;
     color: #0000004d;
     z-index: -1;
+    transition-duration: 300ms;
+    will-change: left, top;
 }
 
-.inputSearch:focus  + .searchPlaceholder {
+.inputSearch:focus  + .searchPlaceholder, .inputSearch:not(:placeholder-shown) + .searchPlaceholder {
     top: -1.1em;
     z-index: 2;
     background-color: white;
@@ -47,7 +50,7 @@ body {
 } 
 
 .imageIcon {
-    width: 01em;
+    width: 1.2em;
     height: 0.9em;
     border-radius: 50%;
     border: 1px solid #0000004d;
@@ -165,6 +168,22 @@ body {
     margin: var(--paddingWeight);
     padding: var(--paddingWeight);
     display: flex;
+    font-size: 1.3em;
+}
+
+.contentInfo>div>p::before{
+    content: attr(id)': ';
+    font-weight:bold;
+}
+
+.contentInfo > div {
+    margin-right: 3.5em;
+    /* color: red; */
+}
+
+.linkHeading {
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
 .title {
@@ -176,33 +195,55 @@ body {
     height: 86%;
     margin: var(--paddingWeight);
     padding: var(--paddingWeight);
-    display: grid;
-    grid-auto-rows: 11em;
-    grid-gap: var(--paddingWeight);
 }
 
 .flag {
-    grid-column: 1/3;
-    grid-row: 1;
+        height: 14em;
 }
 
 .contentInfo {
-    grid-column: 2/4;
-    grid-row: 1;
+    display: flex;
 }
 
+.row {
+    display: flex;
+}
 
-.wikipedia {
-    grid-column: 1/4;
-    grid-row: 2;
+.wiki {
+    margin: 0.5em;
+    width: auto;
+    height: auto;
+    padding-left: 2.5em;
+}
+
+#wikiHeading {
+    font-size: 1.25em;
+}
+
+#wikiContent {
+    padding-top: 0.5em;
 }
 
 .map {
-    grid-column: 1/4;
-    grid-row: 3;
 }
 
 .countryImages {
-    grid-column: 2/4;
-    grid-row: 3;
+}
+.appTitle{
+    font-size: 2.5em;
+    padding: 0.2em 0.5em;
+    border-bottom: 1px solid;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color:  #045da5;
+}
+
+#wikiLink a {
+    color:  #045da5;
 }

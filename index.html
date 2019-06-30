@@ -15,7 +15,7 @@
                 <div class="searchDiv">
                     <!-- <img src="https://image.flaticon.com/icons/png/512/954/954591.png" alt="Search" style="height: 1.2em;"> -->
                     <div class="imageIcon"></div>
-                    <input type="text" class="inputSearch" onkeyup="changeList()">
+                    <input type="text" class="inputSearch" placeholder=" " onkeyup="changeList()">
                     <div class="searchPlaceholder">Search</div>
                     <button>
                         <div class="closeButton" onclick="clearSearchText()"></div>
@@ -27,27 +27,50 @@
             </div>
         </div>
         <div class="main">
+            <div class="appTitle">
+                My Countries
+            </div>
             <div class="headerTitle">
                 <div class="title"></div>
             </div>
             <div class="contentDiv">
-                <div class="flag">
-                    <img src="" alt="" id="flagImage" style="height: 100%; width: auto">
+                <div class="row">
+                    <div class="flag">
+                        <img src=""  id="flagImage" style="height: 100%; width: auto">
+                    </div>
+                    <div class="wikipedia">
+                        <div class="wiki">
+                            <div id="wikiHeading"></div>
+                            <div id="wikiLink"></div>
+                        </div>
+                        <div class="wiki" id="wikiContent"></div>
+                    </div>
                 </div>
                 <div class="contentInfo">
-                    <p id="name"></p>
-                    <p id="capital"></p>
-                    <p id="region"></p>
-                    <p id="area"></p>
-                    <p id="currency"></p>
-                    <p id="language"></p>
+                    <div>
+                        <p id="Capital"></p>
+                        <p id="Region"></p>
+                        <p id="Timezones"></p>
+                        <p id="Currency"></p>
+                        <p id="Language"></p>
+                    </div>
+                    <div>
+                        <p id="Borders"></p>
+                        <p id="Area"></p>
+                        <p id="Population"></p>
+                        <p id="Location"></p>
+                    </div>
+                    <div id="moreLinks">
+                        <span class="linkHeading">More Links:</span> <br>
+                    </div>
                 </div>
-                <div class="wikipedia"></div>
-                <div class="map"></div>
+                <div class="map" id="googleMap" ></div>
                 <div class="countryImages"></div>
             </div>
         </div>
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="app.js"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKo8VPVOYqomAuSi5A0Gfr-AJGySxxuMw&v=3&callback=initMap"> </script> -->
 </html>
