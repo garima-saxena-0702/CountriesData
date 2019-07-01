@@ -40,13 +40,23 @@ function removeList(textValue) {
             ul.children[i].style.opacity = 0;
             ul.children[i].style.padding = '0 0.5em';
             ul.children[i].style.borderBottom = '0px solid rgba(0, 0, 0, 0.5)';
+            setTimeout(()=> {
+                ul.children[i].style.display = 'none';
+            }, 200)
         }else {
             ul.children[i].style.opacity = 1;
             ul.children[i].style.height = '100%';
             ul.children[i].style.padding = '0.5em 0.5em';
             ul.children[i].style.borderBottom = '1px solid rgba(0, 0, 0, 0.5)';
+            setTimeout(() => {
+                ul.children[i].style.display = 'list-item';
+            }, 200)
         }
     }
+}
+
+function hideList() {
+    ul.children[i].style.display = 'none';
 }
 
 function detailData(countryName) {
