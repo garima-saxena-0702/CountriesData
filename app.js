@@ -76,6 +76,7 @@ function detailData(countryName) {
 
 function addMoreLinks(links) {
     var linkDiv = document.getElementById('moreLinks');
+    removeLinks(linkDiv);
     links.forEach(link => {
         let aTag = document.createElement('a');
         aTag.href = link;
@@ -88,6 +89,10 @@ function addMoreLinks(links) {
         aTag.innerHTML = title+'<br>';
         linkDiv.appendChild(aTag);
     });
+}
+
+function removeLinks(linkDiv) {
+    linkDiv.innerHTML = '<span class="linkHeading">More Links:</span> <br>';
 }
 
 function callWikiPedia(countryName) {
