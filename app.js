@@ -85,7 +85,7 @@ function detailData(countryName) {
             document.getElementById('Population').innerHTML = countryData[0].population;
             document.getElementById('Location').innerHTML = countryData[0].latlang;
             callWikiPedia(countryData[0].name);
-            // callMap(countryData[0].latlng)
+            initMap(countryData[0].latlng)
         }).catch(function(err) {
             console.log(err);
     });
@@ -138,12 +138,11 @@ function wikiAjax(searchURL) {
 }
 
 
-function callMap(latlang) {
-    var mapProp = {
-        center: new google.maps.LatLng(latlang[0], latlang[1]),
-        zoom: 5,
-    };
-    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+function initMap(latlang = [33, 65]) {
+    var uluru = {lat: latlang[0], lng: latlang[1]};
+    var map = new google.maps.Map(
+        document.getElementById('googleMap'), {zoom: 4, center: uluru});
+    var marker = new google.maps.Marker({position: uluru, map: map});
 }    
 
 
