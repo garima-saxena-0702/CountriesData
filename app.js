@@ -62,11 +62,18 @@ function hideList() {
 function detailData(countryName) {
     let countryData;
     document.getElementsByClassName('title')[0].innerHTML = countryName;
+    let appTitle = document.getElementById('loaderMain')
+    let loader = document.createElement('div');
+    loader.style.content = '';
+    loader.classList = 'loader';
+    loader.id = 'loader';
+    appTitle.appendChild(loader);
     fetch('https://restcountries.eu/rest/v2/name/'+countryName+'?fullText=true', {
         method: 'get'
         }).then((resp) => resp.json())
         .then(function(data) {
             countryData = data;
+            appTitle.removeChild(appTitle.lastChild);
             document.getElementById('flagImage').src = countryData[0].flag;
             document.getElementById('Capital').innerHTML = countryData[0].capital;
             document.getElementById('Region').innerHTML = countryData[0].region;
@@ -95,7 +102,6 @@ function addMoreLinks(links) {
         title = title.replace(/_/g, ' ');
         title = title.replace(/%E2%80%93/g, ' - ');
         title = title.replace(/%27/g, "'");
-        console.log(title)
         aTag.innerHTML = title+'<br>';
         linkDiv.appendChild(aTag);
     });
@@ -110,7 +116,6 @@ function callWikiPedia(countryName) {
 
     var wikiResponse = wikiAjax(wiki);
     wikiResponse.done(function (data) {
-        console.log(data);
 
         document.getElementById('wikiContent').innerHTML = data[2][0];
         document.getElementById('wikiHeading').innerHTML = 'ABOUT ' + data[1][0].toUpperCase();
